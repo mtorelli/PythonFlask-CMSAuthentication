@@ -31,4 +31,9 @@ def login():
             error = "Username or Password incorrect"
         elif not user.check_password(password):
             error = "Username or Password incorrect"
+        if error is None:
+            session.clear()
+            session['user_id'] = user.id
+            return redirect(url_for('admin.content', type='page'))
+        flash(error)
     return render_template('admin/login.html')
