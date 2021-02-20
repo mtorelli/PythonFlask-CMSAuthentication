@@ -3,9 +3,11 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+
 class Type(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
+
 
 class Content(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,10 +19,12 @@ class Content(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
+
 class Setting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.String(100), nullable=False)
     value = db.Column(db.String(100), nullable=False)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,3 +32,4 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     firstname = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
