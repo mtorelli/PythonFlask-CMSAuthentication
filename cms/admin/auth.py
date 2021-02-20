@@ -26,4 +26,5 @@ def login():
         username = request.form['username']
         password = request.form['password']
         error = None
+        user = User.query.filter_by(username=username).first()
     return render_template('admin/login.html')
