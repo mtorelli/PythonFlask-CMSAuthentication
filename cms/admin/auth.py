@@ -37,3 +37,9 @@ def login():
             return redirect(url_for('admin.content', type='page'))
         flash(error)
     return render_template('admin/login.html')
+
+
+@admin_bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('admin.login'))
