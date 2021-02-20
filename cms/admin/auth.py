@@ -27,4 +27,8 @@ def login():
         password = request.form['password']
         error = None
         user = User.query.filter_by(username=username).first()
+        if user is None:
+            error = "Username or Password incorrect"
+        elif not user.check_password(password):
+            error = "Username or Password incorrect"
     return render_template('admin/login.html')
