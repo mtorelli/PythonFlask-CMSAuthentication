@@ -22,4 +22,8 @@ def load_user():
 
 @admin_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        error = None
     return render_template('admin/login.html')
