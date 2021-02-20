@@ -18,3 +18,8 @@ def protected(route_function):
 def load_user():
     user_id = session.get('user_id')
     g.user = User.query.get(user_id) if user_id is not None else None
+
+
+@admin_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('admin/login.html')
